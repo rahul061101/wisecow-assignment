@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wc-deploy
+  labels:
+    apps: wc-app
+spec:
+  selector:
+    matchLabels:
+      app: wc-app
+  template:
+    metadata:
+      labels:
+        app: wc-app
+    spec:
+      containers:
+        - name: wc-deploy
+          image: rahulpolubothu/accuknox:wc
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 4499
