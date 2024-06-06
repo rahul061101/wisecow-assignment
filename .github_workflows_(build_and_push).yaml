@@ -41,5 +41,5 @@ jobs:
       - name: Apply Kubernetes manifests
         continue-on-error: true
         run: |
-          kubectl apply -f manifest/deployment.yaml
-          kubectl apply -f manifest/service.yaml
+          kubectl apply -f manifests_wisecow.yaml
+          kubectl apply -f manifests_service.yaml
