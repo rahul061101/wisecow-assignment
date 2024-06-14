@@ -1,15 +1,9 @@
 FROM ubuntu:latest
-
-RUN apt-get update && \
-    apt-get install -y netcat-openbsd fortune cowsay && \
-    rm -rf /var/lib/apt/lists/*
-
-WORKDIR /app
-
-COPY wisecow.sh .
-
-RUN chmod +x wisecow.sh
-
+RUN apt -y update
+RUN apt install fortune-mod cowsay -y
+RUN apt install -y netcat-openbsd
+COPY ./wisecow.sh /wisecow.sh
+RUN chmod +x /wisecow.sh
+ENV PATH="$PATH:/usr/games"
 EXPOSE 4499
-
-CMD ["./wisecow.sh"]
+CMD ["/wisecow.sh"]
